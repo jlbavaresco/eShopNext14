@@ -10,9 +10,9 @@ const getCategoriasDB = async () => {
     }
 }
 
-const addCategoriaDB = async (body) => {
+const addCategoriaDB = async (objeto) => {
     try {
-        const { nome } = body;
+        const { nome } = objeto;
         const results = await pool.query(`INSERT INTO categorias (nome) VALUES ($1)
         returning codigo,nome`, [nome]);
         const categoria = results.rows[0];
@@ -22,9 +22,9 @@ const addCategoriaDB = async (body) => {
     }
 }
 
-const updateCategoriaDB = async (body) => {
+const updateCategoriaDB = async (objeto) => {
     try {
-        const { codigo, nome } = body;        
+        const { codigo, nome } = objeto;        
         const results = await pool.query(`UPDATE categorias set nome = $2
         WHERE codigo = $1 returning codigo, nome`, [codigo, nome]);
         if (results.rowCount == 0) {
