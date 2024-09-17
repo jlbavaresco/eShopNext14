@@ -1,6 +1,8 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import Menu from "@/componentes/Menu";
+import { Suspense } from 'react';
+import Loading from './loading';
 
 export const metadata = {
   title: "eShop Next 14",
@@ -12,7 +14,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body >
         <Menu/>
+        <Suspense fallback={<Loading/>}>
         {children}
+        </Suspense>
       </body>
     </html>
   );
