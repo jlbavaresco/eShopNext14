@@ -15,7 +15,7 @@ function Menu() {
                         <Link className="nav-link" href={`/`}>Home</Link>
                         <NavDropdown title="Manutenções" id="basic-nav-dropdown">
                             <Link className="dropdown-item" href={`/privado/categoria`}>Categorias</Link>
-                            <Link className="dropdown-item" href={`/`}>Produtos</Link>
+                            <Link className="dropdown-item" href={`/privado/produto`}>Produtos</Link>
                         </NavDropdown>
                         <Link className="nav-link active" href={`/sobre`}>Sobre</Link>
                     </Nav>
