@@ -21,6 +21,8 @@ const deleteProduto = async (codigo) => {
 
 export default async function Produto() {
 
+    revalidatePath('/privado/produto/');
+
     const produtos = await getProdutosDB();
 
     return (
