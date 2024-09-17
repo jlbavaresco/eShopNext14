@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
 
-export const revalidate = 60; // revalida a cada 30 segundos
+export const revalidate = 30; // revalida a cada 30 segundos
 
 const deleteProduto = async (codigo) => {
     'use server';
