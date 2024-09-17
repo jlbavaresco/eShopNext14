@@ -21,6 +21,8 @@ const deleteCategoria = async (codigo) => {
 
 export default async function Categoria() {
 
+    revalidatePath('/privado/categoria/');
+
     const categorias = await getCategoriasDB();
 
     return (
