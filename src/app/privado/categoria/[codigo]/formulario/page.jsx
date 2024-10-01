@@ -4,9 +4,17 @@ import { getCategoriaPorCodigoDB, updateCategoriaDB, addCategoriaDB } from '@/bd
 import CampoEntradaFloating from '@/componentes/comuns/CampoEntradaFloating';
 import { Suspense } from 'react';
 import Loading from '@/componentes/comuns/Loading';
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/auth/auth";
 
 const FormularioPage = async ({ params }) => {
 
+
+    const session = await getServerSession(authOptions);
+
+    if (!session) {
+        redirect("/api/auth/signin");
+    }
     let categoria = null;
     if (params.codigo == 0) {
         categoria = { codigo: 0, nome: "" };

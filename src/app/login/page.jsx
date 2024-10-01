@@ -1,6 +1,7 @@
 'use client'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { signIn, signOut } from "next-auth/react";
 
 export default async function Login() {
 
@@ -12,7 +13,7 @@ export default async function Login() {
         </div>
 
         <div className="col-12 col-md-6">        
-          <Form>
+          <Form action={signIn}>
             <Form.Group className="mb-3" controlId="txtEmail">
               <Form.Label>Email</Form.Label>
               <Form.Control type="email" placeholder="Informe o email" 

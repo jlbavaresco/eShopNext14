@@ -7,8 +7,16 @@ import CampoSelectFloating from '@/componentes/comuns/CampoSelectFloating';
 import { Suspense } from 'react';
 import Loading from '@/componentes/comuns/Loading';
 
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/auth/auth";
 
 const FormularioPage = async ({ params }) => {
+
+    const session = await getServerSession(authOptions);
+
+    if (!session) {
+        redirect("/api/auth/signin");
+    }
 
     const categorias = await getCategoriasDB();
 

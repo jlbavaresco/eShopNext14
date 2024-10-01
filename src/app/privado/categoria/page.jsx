@@ -6,6 +6,8 @@ import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
 import { Suspense } from 'react';
 import Loading from '@/componentes/comuns/Loading';
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/auth/auth";
 
 
 const deleteCategoria = async (codigo) => {
@@ -22,13 +24,19 @@ const deleteCategoria = async (codigo) => {
 
 export default async function Categoria() {
 
+    const session = await getServerSession(authOptions);
+
+    if (!session) {
+        redirect("/api/auth/signin");
+    }
+
     revalidatePath('/privado/categoria/');
 
     const categorias = await getCategoriasDB();
 
     return (
         <Suspense fallback={<Loading />}>
-            <div style={{ padding: '20px' }}>
+            <div style={{ padding: '20px' }}>                
                 <h1>Categorias</h1>
                 <Link className="btn btn-primary"
                     href={`/privado/categoria/${0}/formulario`}>

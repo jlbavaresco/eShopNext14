@@ -6,6 +6,9 @@ import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
 import { Suspense } from 'react';
 import Loading from '@/componentes/comuns/Loading';
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/auth/auth";
+
 
 const deleteProduto = async (codigo) => {
     'use server';
@@ -20,6 +23,12 @@ const deleteProduto = async (codigo) => {
 };
 
 export default async function Produto() {
+
+    const session = await getServerSession(authOptions);
+
+    if (!session) {
+        redirect("/api/auth/signin");
+    }
 
     revalidatePath('/privado/produto/');
 
