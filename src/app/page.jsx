@@ -1,5 +1,4 @@
 import { getProdutosDB } from '@/bd/useCases/produtoUseCases';
-import CardProduto from '@/componentes/comuns/CardProduto';
 
 export const revalidate = 60; // revalida a cada 30 segundos
 
@@ -26,7 +25,7 @@ export default async function Home() {
                   <p className="card-text"><small className="text-muted">Categoria: {objeto.categoria_nome}</small></p>
                   <p className="card-text"><small className="text-muted">Estoque: {objeto.quantidade_estoque}</small></p>
                 </div>
-                <div class="card-footer text-muted">
+                <div className="card-footer text-muted">
                   <button type="button" className="btn" >Detalhes do produto</button>
                 </div>
               </div>

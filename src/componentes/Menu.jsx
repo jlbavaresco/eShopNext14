@@ -4,6 +4,10 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Link from 'next/link';
+
+const logout = () => {
+
+}
 function Menu() {
     return (
         <Navbar expand="lg" className="bg-body-tertiary">
@@ -17,6 +21,12 @@ function Menu() {
                             <Link className="dropdown-item" href={`/privado/categoria`}>Categorias</Link>
                             <Link className="dropdown-item" href={`/privado/produto`}>Produtos</Link>
                         </NavDropdown>
+                        <NavDropdown title="Login" id="basic-nav-dropdown">
+                            <Link className="dropdown-item" href={`/login`}>Login</Link>                           
+                            <form action={logout}>
+                                <button type="submit" className="dropdown-item">Logout</button>
+                            </form>
+                        </NavDropdown>                        
                         <Link className="nav-link active" href={`/sobre`}>Sobre</Link>
                     </Nav>
                 </Navbar.Collapse>
