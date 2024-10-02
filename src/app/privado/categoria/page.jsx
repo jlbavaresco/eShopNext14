@@ -24,11 +24,11 @@ const deleteCategoria = async (codigo) => {
 
 export default async function Categoria() {
 
-    const session = await getServerSession(authOptions);
+    // const session = await getServerSession(authOptions);
 
-    if (!session) {
-        redirect("/api/auth/signin");
-    }
+    // if (!session) {
+    //     redirect("/api/auth/signin");
+    // }
 
     revalidatePath('/privado/categoria/');
 

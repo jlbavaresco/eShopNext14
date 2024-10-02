@@ -24,8 +24,7 @@ function Menu() {
                                 <Link className="dropdown-item" href={`/privado/produto`}>Produtos</Link>
                             </NavDropdown>
                         }
-                        <NavDropdown title={session == null ? 'Login' : session.user.name} id="basic-nav-dropdown">
-                            {/* <Link className="dropdown-item" href={`/login`}>Login antigo</Link>                            */}
+                        <NavDropdown title={session == null ? 'Login' : session.user.name} id="basic-nav-dropdown">                            
                             {session == null &&
                                 <form action={signIn}>
                                     <button type="submit" className="dropdown-item">Login</button>
