@@ -36,33 +36,44 @@ export const authOptions = {
 
                 if (!usuario) {
                     return null;
-                }                
-                return {   
-                    id : usuario.email,                
-                    email: usuario.email,
-                    name: usuario.nome,
-                    randomKey: parseInt(Math.random() * 45)
-                };                
+                }                                       
+                // return {   
+                //     id : usuario.email,                
+                //     email: usuario.email,
+                //     name: usuario.nome,   
+                //     tipo : usuario.tipo,                 
+                //     randomKey: parseInt(Math.random() * 9999)
+                // };   
+                // aqui para retornar o tipo tem que colocar esta informação adicional
+                return { tipo: usuario.tipo ?? "user",   
+                  id : usuario.email,                
+                  email: usuario.email,
+                  name: usuario.nome,                 
+                  randomKey: parseInt(Math.random() * 9999)
+               }             
             },
         }),
     ],
     callbacks: {
         session: ({ session, token }) => {
           console.log("Session Callback", { session, token });
+          // aqui para pegar o tipo que foi adicionado no return do authorize e colocar na sessão
+          session.user.tipo = token.tipo;
           return {
             ...session,
             user: {
               ...session.user,
               id: token.id,
-              nome : session.user.nome,
+              name : session.user.name,
               randomKey: token.randomKey,
             },
           };
         },
         jwt: ({ token, user }) => {
-          console.log("JWT Callback", { token, user });
+          console.log("JWT Callback", { token, user });          
           if (user) {
-            const u = user;
+            const u = user;  
+            token.tipo = user.tipo;          
             return {
               ...token,
               id: u.id,
