@@ -6,6 +6,7 @@ import { autenticaUsuarioDB } from "@/bd/useCases/usuarioUseCases";
 export const authOptions = {
     session: {
         strategy: "jwt",
+        maxAge: 1800, // tempo em segundos - 30 minutos
     },
     pages: {
         signIn: '/login', //(4) custom signin page path
