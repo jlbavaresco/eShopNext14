@@ -1,5 +1,5 @@
 import { getProdutosDB } from '@/bd/useCases/produtoUseCases';
-
+import Link from 'next/link';
 export const revalidate = 60; // revalida a cada 30 segundos
 
 export default async function Home() {
@@ -26,7 +26,7 @@ export default async function Home() {
                   <p className="card-text"><small className="text-muted">Estoque: {objeto.quantidade_estoque}</small></p>
                 </div>
                 <div className="card-footer text-muted">
-                  <button type="button" className="btn" >Detalhes do produto</button>
+                  <Link type="button" className="btn btn-secondary" href={`/${objeto.codigo}/detalhe`}>Detalhes do produto</Link>
                 </div>
               </div>
             </div>
