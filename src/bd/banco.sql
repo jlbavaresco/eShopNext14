@@ -31,7 +31,7 @@ values ('Mouse USB','Mouse USB', 20, true, 60.0, current_date,1),
 -- criação da tabela usuários
 create table usuarios (
 	email varchar(50) not null primary key, 
-	senha varchar(20) not null, 
+	senha text not null, 
 	tipo char(1)  not null, 
 	check (tipo = 'A' or tipo = 'U'),
 	telefone varchar(14)  not null, 

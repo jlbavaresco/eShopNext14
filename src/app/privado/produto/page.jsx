@@ -65,11 +65,15 @@ export default async function Produto() {
                                         href={`/privado/produto/${produto.codigo}/formulario`}>
                                         <i className="bi bi-pencil-square"></i>
                                     </Link>
-                                    <form action={deleteProduto.bind(null, produto.codigo)} className="d-inline">
-                                        <Button variant="danger" type='submit'>
-                                            <i className="bi bi-trash"></i>
-                                        </Button>
-                                    </form>
+                                    {
+                                        session?.user?.tipo === 'A' &&
+                                        <form action={deleteProduto.bind(null, produto.codigo)} className="d-inline">
+                                            <Button variant="danger" type='submit'>
+                                                <i className="bi bi-trash"></i>
+                                            </Button>
+                                        </form>
+                                    }
+
                                 </td>
                                 <td>{produto.codigo}</td>
                                 <td>{produto.nome}</td>

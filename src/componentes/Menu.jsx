@@ -24,16 +24,19 @@ function Menu() {
                                 <Link className="dropdown-item" href={`/privado/produto`}>Produtos</Link>
                             </NavDropdown>
                         }
-                        <NavDropdown title={session == null ? 'Login' : session.user.name} id="basic-nav-dropdown">                            
+                        <NavDropdown title={session == null ? 'Login' : session.user.name} id="basic-nav-dropdown">
                             {session == null &&
                                 <form action={signIn}>
                                     <button type="submit" className="dropdown-item">Login</button>
                                 </form>
                             }
                             {session != null &&
-                                <form action={() => signOut({ callbackUrl: '/' })}>
-                                    <button type="submit" className="dropdown-item">Logout</button>
-                                </form>
+                                <>
+                                    <Link className="dropdown-item" href={`/user`}>Meus Dados</Link>
+                                    <form action={() => signOut({ callbackUrl: '/' })}>
+                                        <button type="submit" className="dropdown-item">Logout</button>
+                                    </form>
+                                </>
                             }
                         </NavDropdown>
                         <Link className="nav-link active" href={`/sobre`}>Sobre</Link>
